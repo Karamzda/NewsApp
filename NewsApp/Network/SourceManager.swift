@@ -16,8 +16,6 @@ class SourceManager: NSObject {
     
     let mainStringUrl: String = "https://newsapi.org/v1/sources"
     
-    var sources: [NewsSource] = []
-    
     func fetchSourses(completion: @escaping ([NewsSource]?, Error?) -> Void) {
         Alamofire.request(
             URL(string: mainStringUrl)!,
@@ -29,6 +27,8 @@ class SourceManager: NSObject {
                     completion(nil, response.result.error)
                     return
                 }
+                           
+                var sources: [NewsSource] = []
                 
                 let jsonResult = JSON(data: response.data!)
                 for sourse in (jsonResult["sources"].array)! {
