@@ -27,7 +27,11 @@ class NewsFeedTableViewCell: UITableViewCell {
     }
     
     func setupCell(article: NewsArticle) {
-        self.mainImageView.kf.setImage(with: article.image)
+        if !(article.image?.isFileURL)! {
+            self.mainImageView.kf.setImage(with: article.image)
+        } else {
+            self.mainImageView.image = #imageLiteral(resourceName: "noImage")
+        }
         self.titleLabel.text = article.title
         self.descriptionLabel.text = article.articleDiscription
     }

@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class NewsSourse {
+class NewsSource {
     var id: String!
     var name: String!
+    
+    required init(json: JSON) {
+        self.id = json["id"].string
+        self.name = json["name"].string
+    }
 }

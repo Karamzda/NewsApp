@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class NewsArticle {
     var title: String!
     var articleDiscription: String!
     var url: URL!
     var image: URL?
+    
+    required init(json: JSON) {
+        self.title = json["title"].string
+        self.articleDiscription = json["description"].string
+        self.url = json["url"].url
+        self.image = json["urlToImage"].url
+    }
 }
