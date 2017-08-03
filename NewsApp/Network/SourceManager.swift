@@ -32,9 +32,9 @@ class SourceManager: NSObject {
                 
                 let jsonResult = JSON(data: response.data!)
                 for sourse in (jsonResult["sources"].array)! {
-                    self.sources.append(NewsSource(json: sourse))
+                    sources.append(NewsSource(json: sourse))
                 }
-                completion(self.sources, nil)
+                completion(sources, nil)
         }
     }
 }
